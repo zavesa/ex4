@@ -20,7 +20,7 @@ double par(void)
 	{
 		x = (i + 0.5)*step;
 		S += 4.0 / (1.0 + x*x);
-#pragma omp atomic
+#pragma omp critical
 	inc++;
 	}
 	t = omp_get_wtime() - t;

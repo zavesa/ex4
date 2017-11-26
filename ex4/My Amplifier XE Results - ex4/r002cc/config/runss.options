@@ -1,0 +1,20 @@
+-r
+C:\Users\Zavesa\documents\visual studio 2010\Projects\ex4\ex4\My Amplifier XE Results - ex4\r002cc
+--data-limit-mb=100
+--stack-stitching
+--follow-child
+--type=frame:counters
+--stackwalk=offline
+--mrte-mode=auto
+--type=cpu:counters
+--type=cpu:stack
+--interval=10
+--type=threading:stack
+--type=waiting:stack
+--type=io:stack
+--search-dir
+sym=C:/Users/Zavesa/documents/visual studio 2010/Projects/ex4/Debug
+--search-dir
+sym=C:/Users/Zavesa/documents/visual studio 2010/Projects/ex4
+--
+C:\Users\Zavesa\documents\visual studio 2010\Projects\ex4\Debug\ex4.exe
