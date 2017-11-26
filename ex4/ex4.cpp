@@ -15,14 +15,21 @@ double par(void)
 	step = 1.0 / (double)num;
 	double t = omp_get_wtime();
 
+	omp_lock_t writelock;
+	omp_init_lock(&writelock);
+
 #pragma omp parallel for private (x) reduction (+: S) num_threads(num_of_threads)
 	for (i = 0; i < num; i++)
 	{
 		x = (i + 0.5)*step;
 		S += 4.0 / (1.0 + x*x);
-#pragma omp critical
-	inc++;
+	
+		omp_set_lock(&writelock);
+		inc++;
+		omp_unset_lock(&writelock);
+	
 	}
+	omp_destroy_lock(&writelock);
 	t = omp_get_wtime() - t;
 	pi = step * S;
 	printf("Par: pi = %.14f\n", pi);
